@@ -1,0 +1,30 @@
+.app_header {
+  background-color: transparent;
+  padding: 20px;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2);
+}
+.dark .app_header {
+  background-color: #232323;
+}
+
+.app_header .app_imgBox {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.app_header .brand {
+  font-size: 25px;
+  font-weight: bold;
+  color: #383838;
+}
+
+.dark .brand {
+  color: #ffffff;
+}
+
+.app_header .switch_icons {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
