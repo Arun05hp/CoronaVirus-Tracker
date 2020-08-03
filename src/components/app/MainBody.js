@@ -5,14 +5,50 @@ import NumberFormat from "react-number-format";
 
 const MainBody = () => {
   const [worldWideData, setWorldWideData] = useState({});
+  const [countries, setCountries] = useState([]);
+  const [country, setInputCountry] = useState("IN");
+  const [countryInfo, setCountryInfo] = useState({});
+
+  console.log(countryInfo);
+  useEffect(() => {
+    try {
+      fetch("https://disease.sh/v3/covid-19/all")
+        .then((response) => response.json())
+        .then((data) => {
+          setWorldWideData(data);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
 
   useEffect(() => {
-    fetch("https://disease.sh/v3/covid-19/all")
+    const getCountriesData = async () => {
+      fetch("https://disease.sh/v3/covid-19/countries")
+        .then((response) => response.json())
+        .then((data) => {
+          const countries = data.map((country) => ({
+            name: country.country,
+            value: country.countryInfo.iso2,
+          }));
+          setCountries(countries);
+        });
+    };
+
+    getCountriesData();
+  }, []);
+
+  const onCountryChange = async (e) => {
+    const countryCode = e.target.value;
+
+    const url = `https://disease.sh/v3/covid-19/countries/${countryCode}`;
+    await fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        setWorldWideData(data);
+        setInputCountry(countryCode);
+        setCountryInfo(data);
       });
-  }, []);
+  };
 
   return (
     <div className="container">
@@ -50,7 +86,13 @@ const MainBody = () => {
                 />
               </p>
               <p className="hero-text">Today Recovered </p>
-              <h2 className="hero-text-g">18,301</h2>
+              <h2 className="hero-text-g">
+                <NumberFormat
+                  value={worldWideData.todayRecovered}
+                  displayType={"text"}
+                  thousandSeparator={true}
+                />
+              </h2>
             </Card>
           </div>
           <div className="col">
@@ -64,33 +106,52 @@ const MainBody = () => {
                 />
               </p>
               <p className="hero-text">Today Deaths</p>
-              <h2 className="hero-text-d">18,301</h2>
+              <h2 className="hero-text-d">
+                <NumberFormat
+                  value={worldWideData.todayDeaths}
+                  displayType={"text"}
+                  thousandSeparator={true}
+                />
+              </h2>
             </Card>
           </div>
           <div className="col">
             <Card>
-              <p className="hero-text h3">Recovery rate </p>
+              <p className="hero-text h3">Recovery Rate </p>
               <p className="hero-text-g h1">
                 <NumberFormat
-                  value={worldWideData.cases}
+                  value={(
+                    (worldWideData.recovered / worldWideData.cases) *
+                    100
+                  ).toFixed(2)}
                   displayType={"text"}
                   thousandSeparator={true}
-                />
+                />{" "}
+                %
               </p>
-              <p className="hero-text">Death Deaths</p>
-              <h2 className="hero-text-d">2.3 %</h2>
+              <p className="hero-text">Death Rate</p>
+              <h2 className="hero-text-d">
+                <NumberFormat
+                  value={(
+                    (worldWideData.deaths / worldWideData.cases) *
+                    100
+                  ).toFixed(2)}
+                  displayType={"text"}
+                  thousandSeparator={true}
+                />{" "}
+                %
+              </h2>
             </Card>
           </div>
         </div>
         <span className="title">
-          <select name="pets" id="pet-select">
-            <option value="">Select</option>
-            <option value="dog">Dog</option>
-            <option value="cat">Cat</option>
-            <option value="Afganistan">goldfishdsfsdf</option>
-            <option value="parrot">Parrot</option>
-            <option value="spider">Spider</option>
-            <option value="goldfishdsfsdf">goldfishdsfsdf</option>
+          <select value={country} onChange={onCountryChange}>
+            <option value="IN">India</option>
+            {countries.map((country, index) => (
+              <option key={index} value={country.value}>
+                {country.name}
+              </option>
+            ))}
           </select>
         </span>
       </div>
