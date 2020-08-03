@@ -1,15 +1,37 @@
 * {
   margin: 0;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
+.h1 {
+  font-size: 1.7rem;
+  font-weight: 600;
+}
+.h3 {
+  font-size: 1.2rem;
+}
 .container {
-  width: 80%;
+  width: 85%;
   margin: 0 auto;
 }
+.innerContainer {
+  margin: 2.5rem 2rem;
+}
 
-.flexBox {
+.flexBox,
+.flex-grid {
   display: flex;
+}
+.flex-grid {
+  margin-bottom: 0.5rem;
+}
+.col {
+  width: 23%;
+  margin: 0.5rem;
+}
+.flex-w {
+  flex-wrap: wrap;
 }
 .flex-c {
   align-items: center;
@@ -24,8 +46,20 @@
   height: 100%;
 }
 
-@media screen and (max-width: 520px) {
+@media screen and (max-width: 568px) {
+  html {
+    font-size: 0.8rem;
+  }
   .container {
     width: 100%;
+  }
+  .innerContainer {
+    margin: 1rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .col {
+    width: 46%;
   }
 }

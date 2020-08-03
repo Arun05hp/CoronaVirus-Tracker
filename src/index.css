@@ -2,8 +2,9 @@ html {
   font-size: 1rem;
 }
 body {
-  margin: 0;
-  font-family: "Poppins", sans-serif;
+  background-color: transparent;
+  transition-property: background-color;
+  transition-duration: 0.2s;
 }
 body.dark {
   background-color: #191919;

@@ -1,7 +1,18 @@
 .card-container {
-  border-radius: 10;
+  border-radius: 10px;
   background-color: #ffffff;
   overflow: hidden;
   padding: 20px;
-  box-shadow: 0px 0px 20px 0 rgba(0, 0, 0, 0.26);
+  word-wrap: break-word;
+  box-shadow: 0px 0px 15px 0 rgba(0, 0, 0, 0.26);
+}
+
+.dark .card-container {
+  background-color: #383838;
+}
+
+@media screen and (max-width: 568px) {
+  .card-container {
+    padding: 15px 10px;
+  }
 }
