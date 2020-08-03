@@ -6,7 +6,7 @@ import MoonLogo from "../../assets/images/moon.svg";
 import SunLogo from "../../assets/images/sun.svg";
 const Header = () => {
   const [darkMode, setDarkMode] = useState(false);
-
+  const ModeLogo = darkMode ? MoonLogo : SunLogo;
   function switchMode() {
     const body = document.getElementById("body");
     body.classList.toggle("dark");
@@ -24,11 +24,7 @@ const Header = () => {
             <span className="brand">Corona Tracker</span>
           </div>
           <div onClick={() => switchMode()} className="switch_icons">
-            <img
-              src="img-fluid"
-              src={darkMode ? SunLogo : MoonLogo}
-              alt="icons"
-            />
+            <img className="img-fluid" src={ModeLogo} alt="icons" />
           </div>
         </div>
       </div>
