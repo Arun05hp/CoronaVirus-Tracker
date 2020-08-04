@@ -15,10 +15,22 @@
   background-color: #383838;
   border: 1px solid #ffffff;
 }
+table {
+  width: 100%;
+  text-align: left;
+  border-collapse: collapse;
+}
+table td,
+table th {
+  padding: 0.8rem 0.5rem;
+}
+table tr {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.36);
+}
 
 .dark .title,
 .dark .hero-text,
-.dark select {
+.dark .text-w {
   color: #ffffff;
 }
 
@@ -32,19 +44,4 @@
 
 .hero-text-d {
   color: #e1306c;
-}
-
-select {
-  padding: 0 0.8rem;
-  outline: none;
-  border: none;
-  background-color: transparent;
-  display: block;
-}
-
-.dark select option {
-  margin: 40px;
-  background: rgba(0, 0, 0, 0.3);
-  color: #fff;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
 }
