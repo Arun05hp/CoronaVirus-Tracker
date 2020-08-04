@@ -3,6 +3,9 @@
   padding: 20px;
   box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2);
 }
+.dark .app_header {
+  background-color: #383838;
+}
 
 .app_header .app_imgBox {
   width: 30px;

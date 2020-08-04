@@ -1,0 +1,16 @@
+.app_footer {
+  padding: 20px;
+  box-shadow: 8px 0 4px 0 rgba(0, 0, 0, 0.2);
+  background-color: transparent;
+}
+.dark .app_footer {
+  background-color: #383838;
+}
+.app_footer .text,
+.app_footer .link {
+  padding-right: 0.5rem;
+}
+.dark .app_footer .text,
+.dark .link {
+  color: #ffffff;
+}
