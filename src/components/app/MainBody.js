@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../../assets/css/mainBody.css";
 import Card from "../UI/Card";
 import NumberFormat from "react-number-format";
-
+import AppChart from "../app/AppChart";
 const MainBody = () => {
   const [worldWideData, setWorldWideData] = useState({});
   const [countryData, setCountryData] = useState({});
@@ -38,7 +38,6 @@ const MainBody = () => {
             recovered: item.recovered,
             deaths: item.deaths,
           }));
-          console.log("s", stateData);
           setStateData(stateData);
         });
     };
@@ -232,7 +231,7 @@ const MainBody = () => {
             </Card>
           </div>
         </div>
-        <div className="table-responsive">
+        <div className="tableWrapper">
           <Card>
             <table>
               <thead>
@@ -244,8 +243,8 @@ const MainBody = () => {
                 </tr>
               </thead>
               <tbody>
-                {stateData.map((s) => (
-                  <tr>
+                {stateData.map((s, index) => (
+                  <tr key={index}>
                     <td className="text-w">{s.state}</td>
                     <td className="hero-text-y">{s.confirmed}</td>
                     <td className="hero-text-g">{s.recovered}</td>
@@ -256,6 +255,10 @@ const MainBody = () => {
             </table>
           </Card>
         </div>
+        <span className="title mv-1">Daily Cases</span>
+        <Card>
+          <AppChart />
+        </Card>
       </div>
     </div>
   );
