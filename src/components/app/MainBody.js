@@ -3,6 +3,7 @@ import "../../assets/css/mainBody.css";
 import Card from "../UI/Card";
 import NumberFormat from "react-number-format";
 import AppChart from "../app/AppChart";
+
 const MainBody = () => {
   const [worldWideData, setWorldWideData] = useState({});
   const [countryData, setCountryData] = useState({});

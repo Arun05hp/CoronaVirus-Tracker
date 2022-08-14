@@ -1,5 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+![Dark Mode](src/assets/images/dark-mode.png)
+
+![Light Mode](src/assets/images/corona-tracker.JPG)
+
 ## Available Scripts
 
 In the project directory, you can run:

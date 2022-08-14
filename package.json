@@ -1,7 +1,7 @@
 {
   "name": "covid-tracker",
   "version": "0.1.0",
-  "private": true,
+  "author": "Arun Kumar (https://github.com/Arun05hp)",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
